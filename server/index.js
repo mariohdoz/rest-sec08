@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.use( require('./routes/usuarioRoute') );
 
 // Conección BD  
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err, resp) => {
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err, resp) => {
     if (err) throw err;
     console.log("Base de datos conectada.");
 });
