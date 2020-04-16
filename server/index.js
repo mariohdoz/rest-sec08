@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
     res.json('Hello World')
 });
 
-// Se importan rutas de usuario
-app.use( require('./routes/usuarioRoute') );
+// Se importan rutas
+app.use( require('./routes/index') );
 
-// Conección BD  
+// Conección BD
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err, resp) => {
     if (err) throw err;
     console.log("Base de datos conectada.");
