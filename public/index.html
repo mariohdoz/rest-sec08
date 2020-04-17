@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Google</title>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="359497945607-r49b9c2vhsfa1ksm2k26p0p1ttv9qjn4.apps.googleusercontent.com">
+
+</head>
+<body>
+
+    <div class="g-signin2" style=" display: flex;  flex-direction: column;  justify-content: center;  align-items: center;  text-align: center;  min-height: 100vh;"" data-onsuccess="onSignIn"></div>
+
+    <script>
+        function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                var id_token = googleUser.getAuthResponse().id_token;
+
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                console.log('token: ' + id_token); // This is null if the 'email' scope is not present.
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/signWG');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                console.log('Signed in as: ' + xhr.responseText);
+                };
+                xhr.send('idtoken=' + id_token);
+
+            }
+    </script>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ require('./config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
@@ -11,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.json('Hello World')
-});
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 // Se importan rutas
 app.use( require('./routes/index') );
