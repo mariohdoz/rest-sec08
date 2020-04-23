@@ -77,7 +77,7 @@ app.put('/usuario/:id', [verificar_token, verificar_admin_role], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
-    Usuario.findOneAndUpdate({_id: id}, body, {new: true, runValidators: true} ,(err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, body, {new: true, runValidators: true} ,(err, usuarioDB) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
@@ -93,7 +93,7 @@ app.delete('/usuario/:id', [verificar_token, verificar_admin_role], (req, res) =
 
     let id = req.params.id;
 
-    Usuario.findOneAndUpdate({ _id: id }, {estado: 0}, { new: true, runValidators: true }, (err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, {estado: 0}, { new: true, runValidators: true }, (err, usuarioDB) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
