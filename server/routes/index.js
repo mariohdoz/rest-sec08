@@ -4,12 +4,8 @@ const app = express();
 
 app.use(require('./usuarioRoute'));
 app.use(require('./loginRoute'));
-app.use(require('./categoriaRoute'))
-app.use(require('./productoRoute'))
-
-// app.get('/', (req, res) => {
-//     res.json('Hello World')
-// });
-
+app.use(require('./categoriaRoute'));
+app.use(require('./productoRoute'));
+app.use(require('./uploadRoute'));
 
 module.exports = app;
