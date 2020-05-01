@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const Usuario = require('../models/usuarioModel');
+const usuarioModel = require('../models/usuarioModel');
 
 exports.obtener_usuarios = (req, res) => {
 

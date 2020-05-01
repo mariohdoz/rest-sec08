@@ -11,6 +11,6 @@ const app = express();
 // Opciones por defecto 
 app.use(fileUpload());
 
-app.post('/upload', upload_controller.cargar_archivo);
+app.post('/upload/:tipo/:id', upload_controller.cargar_archivo);
 
 module.exports = app;

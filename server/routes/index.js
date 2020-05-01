@@ -7,5 +7,6 @@ app.use(require('./loginRoute'));
 app.use(require('./categoriaRoute'));
 app.use(require('./productoRoute'));
 app.use(require('./uploadRoute'));
+app.use(require('./imagenRoute'));
 
 module.exports = app;
