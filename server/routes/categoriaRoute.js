@@ -2,11 +2,14 @@
 
 const express = require('express');
 const { verificar_token, verificar_admin_role } = require('../middlewares/Auth');
+const compression = require("compression");
 
 // Controlador 
 const categoria_controller = require('../controllers/categoriaController');
 
 const app = express(); 
+
+app.use(compression());
 
 app.get('/categoria', categoria_controller.buscar_categoria);
 
